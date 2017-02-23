@@ -4,5 +4,7 @@ angular.module("MuseumApp")
 function ExhibitController () {
   var vm = this;
 
-  vm.test = "Exhibit World";
+  vm.title = "Exhibit";
+  vm.img = "http://4.bp.blogspot.com/--e_BDE_jjKQ/VdtAbTHozTI/AAAAAAAAHsI/bGdPlHsDlZQ/s1600/Sargent_DIGITAL_Hero.jpg"
+
 }
