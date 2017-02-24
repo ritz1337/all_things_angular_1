@@ -11,27 +11,19 @@
 			<h1>YOU'VE GOT {{ todosVm.remainingTodos().length }} THINGS TO DO!</h1>
 			<h4>{{ todosVm.completedTodos().length }} things completed | {{ todosVm.remainingTodos().length }} things remaining</h4>
 		</header>
-		<main>
-			<!-- begin add new todo -->
-			<form class="add-todo" ng-submit="todosVm.addTodo()">
-				<input class="text-box" type="text" placeholder="I need to..." ng-model="todosVm.text">
-				<input type="submit" class="btn btn-add" value="+">
-			</form>
-			<!-- end add new todo -->
+    <nav class="tabs">
+      <a ui-sref-active="active" ui-sref="home">My List</a>
+      <a ui-sref-active="active" ui-sref="archive">Archive</a>
+      <a ui-sref-active="active" ui-sref="about">About</a>
 
-			<!-- begin show all todos -->
-			<section class="todo-list">
-				<ul>
-					<li ng-repeat="todo in todosVm.todoList">
-						<input class="checkbox" type="checkbox" ng-model="todo.done" id="todo-{{$index}}">
-						<label for="todo-{{$index}}" ng-class="{done: todo.done}">{{ todo.task }}</label>
-						<button class="btn btn-delete" ng-click="todosVm.deleteTodo($index)">x</button>
-					</li>
-				</ul>
-			</section>
-			<!-- end show all todos -->
+    </nav>
+		<main ui-view>
+<!-- everything from here moved to home.html -->
 		</main>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <!-- new router script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
+    <!-- end new router script -->
 		<script src="js/app.js"></script>
 		<script src="js/TodosController.js"></script>
 	</body>
