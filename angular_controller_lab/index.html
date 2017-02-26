@@ -5,7 +5,7 @@
 <head>
     <title>Museum</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- AngularJS CDN, must come first -->
+    <!-- AngularJS CDN, must come first before other scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
 </head>
 
@@ -16,17 +16,48 @@
         <hr>
 
         <div ng-controller="ExhibitController as xzibit">
-          <div class="exhibit-title">{{xzibit.title}}</div>
-          <div><img src="{{xzibit.img}}"</div>
+          <div class="exhibit-content">
+            <h2>{{xzibit.title}}</h2>
+            <div><img src="{{xzibit.img}}"></div>
+            <p>{{xzibit.imgtitle}}</p>
+            <p>{{xzibit.imgauthor}}</p>
+          </div>
         </div>
+        <hr>
 
         <div ng-controller="OperationsController as op">
-          <div>Op Test: {{ op.test }}</div>
+          <div class="operations-content">
+            <h2>{{op.title}}</h2>
+            <h3>Hours:</h3>
+            <ul>
+              <li ng-repeat="hours in op.timings">
+                <strong>{{hours.day}}: </strong><em>{{hours.timings}}</em>
+              </li>
+            </ul>
+            <h3>Suggested Admission:</h3>
+            <ul>
+              <li ng-repeat="adtype in op.admissions">
+                <strong>{{adtype.category}}: </strong><em>{{adtype.price}}</em>
+              </li>
+            </ul>
+          </div>
         </div>
+        <hr>
 
         <div ng-controller="DonorController as donor">
-          <div>Donor Test: {{ donor.test }}</div>
+          <div class="donor-content">
+          <h2>{{donor.title}}</h2>
+          <h3>Contact:</h3>
+          <p><a href="{{donor.info.email}}">{{donor.info.email}}</a> {{donor.info.phone}}</p>
+          <h3>Donation Amounts:</h3>
+            <ul>
+              <li ng-repeat="value in donor.amounts track by $index">
+                {{value}}
+              </li>
+            </ul>
+          </div>
         </div>
+
     </div>
 
     <!-- Our Javascript files, app.js must be loaded first -->
